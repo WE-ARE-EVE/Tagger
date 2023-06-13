@@ -10,7 +10,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@master
         with:
-          token: "${{secrets.GITHUB_TOKEN}}"
+          token: "${{secrets.EVE_GITHUB_TOKEN}}"
 
       - name: Setup node env
         uses: actions/setup-node@v2.1.2
