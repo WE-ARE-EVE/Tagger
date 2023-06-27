@@ -40,6 +40,7 @@ export default {
             await axios.get('/api/v1/getFilesToTag')
                 .then((res) => {
                     this.filesToTag = res.data
+                    this.currStep = 'selectingFile'
                 })
                 .catch((err) => {
                     console.log(err)
@@ -161,11 +162,11 @@ export default {
                     <input class="main__interactive__name" placeholder="Your Name" v-model="nameInput">
                 </div>
                 <div class="main__interactive__file_select" v-if="currStep==='fileSelect'">
-                    <div class="main__interactive__file_select__title">
+                    <div class="main__interactive__file_select__title" @click="getFilesToTag()">
                         <div class="main__interactive__file_select__title__main">CLAIM FILE</div>
                         <div class="main__interactive__file_select__title__sub">Once you claim you must finish!</div>
                     </div>
-                    <div class="main__interactive__file_select__files">
+                    <div class="main__interactive__file_select__files" v-if="currStep==='selectingFile'">
                         <div class="main__interactive__file_select__files__file" v-for="file in filesToTag['files']" :key="file" @click="selectFile(file)">
                             <div class="main__interactive__file_select__files__file__name">
                                 {{ file }}
