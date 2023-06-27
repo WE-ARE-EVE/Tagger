@@ -3,12 +3,11 @@ import vue from '@vitejs/plugin-vue'
 import dsv from '@rollup/plugin-dsv'
 
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue(), dsv()],
   server: {
     port: 8090,
-    host: '20.51.219.72',
+    host: '0.0.0.0',
     proxy: {
       '/api': {
         target: 'http://20.51.219.72:4208',
