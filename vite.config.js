@@ -7,7 +7,6 @@ export default defineConfig({
   plugins: [vue(), dsv()],
   server: {
     port: 8090,
-    host: '0.0.0.0',
     proxy: {
       '/api': {
         target: 'http://20.51.219.72:4208',
