@@ -37,7 +37,7 @@ export default {
             }
         },
         async getFilesToTag() {
-            await axios.get('http://20.51.219.72:4208/v1/getFilesToTag')
+            await axios.get('https://taggerapiproxyserver.azurewebsites.net/api/v1/getFilesToTag')
                 .then((res) => {
                     this.filesToTag = res.data
                     this.currStep = 'selectingFile'
@@ -47,7 +47,7 @@ export default {
                 })
         },
         async tagFile(filename, data) {
-            await axios.post('http://20.51.219.72:4208/v1/tagFile', {
+            await axios.post('https://taggerapiproxyserver.azurewebsites.net/api/v1/tagFile', {
                 filename,
                 data
             })
@@ -61,7 +61,7 @@ export default {
         async selectFile(file) {
             this.currStep = 'tagFile'
             this.selectedFile = file
-            await axios.get('http://20.51.219.72:4208/v1/getFileContent', {
+            await axios.get('https://taggerapiproxyserver.azurewebsites.net/api/v1/getFileContent', {
                 params: {
                     filename: file
                 }
@@ -99,7 +99,7 @@ export default {
         },
         async getTaggedFiles() {
             this.openModal = true;
-            await axios.get('http://20.51.219.72:4208/v1/getTaggedFiles')
+            await axios.get('https://taggerapiproxyserver.azurewebsites.net/api/v1/getTaggedFiles')
                 .then((res) => {
                     this.taggedFiles = res.data['files']
                 })
