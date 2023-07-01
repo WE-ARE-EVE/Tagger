@@ -19,7 +19,7 @@ export default {
             spaceComplexity: '',
             taggedFiles: [],
             displayLimit: 100,
-            openModal: false
+            openModal: false,
         }
     },
     methods: {
@@ -117,7 +117,6 @@ export default {
                 this.validateName()
             }
         })
-        this.filesToTag = this.getFilesToTag()
     },
     computed: {
         displayTaggedFiles() {
@@ -166,7 +165,9 @@ export default {
                         <div class="main__interactive__file_select__title__main">CLAIM FILE</div>
                         <div class="main__interactive__file_select__title__sub">Once you claim you must finish!</div>
                     </div>
-                    <div class="main__interactive__file_select__files" v-if="currStep==='selectingFile'">
+                </div>
+                <div class="main__interactive__file_select" v-if="currStep==='selectingFile'">
+                    <div class="main__interactive__file_select__files">
                         <div class="main__interactive__file_select__files__file" v-for="file in filesToTag['files']" :key="file" @click="selectFile(file)">
                             <div class="main__interactive__file_select__files__file__name">
                                 {{ file }}
@@ -177,6 +178,7 @@ export default {
                         </div>
                     </div>
                 </div>
+
             </div>
         </div>
         <div class="file_explorer" v-if="currStep==='tagFile'">
