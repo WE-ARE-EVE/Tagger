@@ -48,8 +48,7 @@ export default {
         },
         async tagFile(filename, data) {
             await axios.post('https://taggerapiproxyserver.azurewebsites.net/api/v1/tagFile', {
-                filename: filename,
-                data: data
+                data
             })
                 .then((res) => {
                     console.log(res)
