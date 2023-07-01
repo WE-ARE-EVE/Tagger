@@ -12,7 +12,12 @@ export default defineConfig({
         target: 'http://20.51.219.72:4208',
         rewrite: (path) => path.replace(/^\/api/, ''),
         changeOrigin: true,
-        logLevel: 'debug'
+        logLevel: 'debug',
+        headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE',
+        'Access-Control-Allow-Headers': 'Origin, X-Requested-With, Content-Type, Accept',
+        }
       }
     }
   }
