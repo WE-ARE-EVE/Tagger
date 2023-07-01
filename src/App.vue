@@ -46,9 +46,13 @@ export default {
                     console.log(err)
                 })
         },
-        async tagFile(filename, data) {
+        async tagFile(file_id, problem_id, submission_id, time_complexity, space_complexity) {
             await axios.post('https://taggerapiproxyserver.azurewebsites.net/api/v1/tagFile', {
-                data
+                "file_id": file_id,
+                "problem_id": problem_id,
+                "submission_id": submission_id,
+                "space_complexity": space_complexity,
+                "time_complexity": time_complexity
             })
                 .then((res) => {
                     console.log(res)
@@ -79,12 +83,11 @@ export default {
             }
             let problem_id = this.selectedFile.split('/')[0]
             let submission_id = this.selectedFile.split('/')[1]
-            this.tagFile(this.selectedFile, {
-                "file_id": this.selectedFile,
-                "problem_id": problem_id,
-                "submission_id": submission_id,
-                "time_complexity": this.timeComplexity,
-                "space_complexity": this.spaceComplexity
+            this.tagFile(this.selectedFile, 
+                problem_id,
+                submission_id,
+                this.timeComplexity,
+                this.spaceComplexity
             })
             this.reset()
         },
