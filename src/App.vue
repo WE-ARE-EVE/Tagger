@@ -88,7 +88,7 @@ export default {
                 submission_id,
                 this.timeComplexity,
                 this.spaceComplexity
-            })
+            )
             this.reset()
         },
         reset() {
